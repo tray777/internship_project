@@ -6,7 +6,9 @@ from time import sleep
 class TotalProjectsPage(Page):
     TOTAL_PROJECTS_TEXT = (By.XPATH, "//div[@class='page-title off_plan']")
     FILTERS_BUTTON = (By.XPATH, "//a[@class='filter-button w-inline-block']")
-    #HIGH_DEMAND_TAG = (By.XPATH, "//div[@class='_5-comission' and text()='High Demand']")
+    HIGH_DEMAND_TAG = (By.XPATH, "//div[@class='_5-comission' and text()='High Demand']")
+    ALL_PRODUCTS = (By.XPATH, "//a[@wized='cardOfProperty']")
+    CLICK_NEXT_PAGE = (By.XPATH, "//a[@wized='nextPageProperties']")
 
     def verify_text_displayed(self, total_projects_text):
         self.verify_text(total_projects_text, *self.TOTAL_PROJECTS_TEXT)
@@ -15,7 +17,25 @@ class TotalProjectsPage(Page):
         sleep(5)
         self.wait_element_clickable_click(self.FILTERS_BUTTON)
 
-    #def verify_info_buttons(self, high_demand_tag):
-     #   high_demand_tag = int(high_demand_tag)
-     #   demand_tag = self.find_elements(*self.HIGH_DEMAND_TAG)
-     #   assert len(demand_tag) == high_demand_tag, f'Expected {high_demand_tag} links, but got {len(demand_tag)}'
+    def verify_high_demand_tag(self):
+        count = 1
+        while count < 13:
+            self.driver.execute_script("window.scrollBy(0,2000)", "")
+            sleep(1)
+            self.driver.execute_script("window.scrollBy(0,2000)", "")
+
+            all_products = self.find_elements(*self.ALL_PRODUCTS)
+            print("start Loop", count)
+
+            for product in all_products:
+                self.wait_element_visible(*self.HIGH_DEMAND_TAG)
+                title = product.find_element(*self.HIGH_DEMAND_TAG).text
+
+                print(title)
+                assert title, 'product title not shown'
+
+            self.wait_element_clickable(*self.CLICK_NEXT_PAGE)
+            self.find_element(*self.CLICK_NEXT_PAGE).click()
+
+            print("count", count)
+            count += 1
