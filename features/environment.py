@@ -10,21 +10,22 @@ def browser_init(context):
     """
     :param context: Behave context
     """
-    # driver_path = ChromeDriverManager().install()
-    # service = Service(driver_path)
-    # context.driver = webdriver.Chrome(service=service)
-
-    #driver_path = GeckoDriverManager().install()
+    #driver_path = ChromeDriverManager().install()
     #service = Service(driver_path)
+    #context.driver = webdriver.Chrome(service=service)
+
+    # driver_path = GeckoDriverManager().install()
+    # service = Service(driver_path)
+    # context.driver = webdriver.Firefox(service=service)
+
+    ### OTHER BROWSERS ###
+    #service = Service(executable_path='C:/Users/Owner/internship_project/geckodriver.exe')
     #context.driver = webdriver.Firefox(service=service)
 
-    ###OTHER BROWSERS ###
-    #service = Service(executable_path='Users/Owner/internship_project/geckodriver.exe')
-    #context.driver = webdriver.Firefox(service=service)
-
-    ###HEADLESS MODE ###
+    ### HEADLESS MODE ###
     options = webdriver.ChromeOptions()
     options.add_argument('headless')
+    options.add_argument("window-size=1920,1080")
     service = Service(ChromeDriverManager().install())
     context.driver = webdriver.Chrome(options=options, service=service)
 

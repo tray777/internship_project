@@ -1,5 +1,6 @@
 from pages.base_page import Page
 from selenium.webdriver.common.by import By
+from time import sleep
 
 
 class MainPage(Page):
@@ -18,3 +19,5 @@ class MainPage(Page):
 
     def click_on_cart_icon(self):
         self.wait_element_clickable_click(self.CONTINUE_BUTTON)
+
+

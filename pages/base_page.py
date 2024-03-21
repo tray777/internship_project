@@ -43,7 +43,7 @@ class Page:
         self.wait.until(EC.element_to_be_clickable(locator), message=f'Element by {locator} not clickable').click()
 
     def wait_url_changes(self, initial_url):
-        self.wait.until(EC.url_changes(initial_url),message=f'Url did not change from {initial_url}')
+        self.wait.until(EC.url_changes(initial_url), message=f'Url did not change from {initial_url}')
 
     def verify_text(self, expected_text, *locator):
         actual_text = self.find_element(*locator).text
