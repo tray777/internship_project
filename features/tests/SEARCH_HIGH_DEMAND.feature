@@ -10,3 +10,5 @@ Feature: Test Scenarios for search filter functionality
     When Click on Filters button
     When Click on High Demand button
     Then Verify all products contain the High Demand tag
+
+

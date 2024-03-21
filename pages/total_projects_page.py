@@ -25,17 +25,14 @@ class TotalProjectsPage(Page):
             self.driver.execute_script("window.scrollBy(0,2000)", "")
 
             all_products = self.find_elements(*self.ALL_PRODUCTS)
-            print("start Loop", count)
 
             for product in all_products:
                 self.wait_element_visible(*self.HIGH_DEMAND_TAG)
                 title = product.find_element(*self.HIGH_DEMAND_TAG).text
 
-                print(title)
                 assert title, 'product title not shown'
 
             self.wait_element_clickable(*self.CLICK_NEXT_PAGE)
             self.find_element(*self.CLICK_NEXT_PAGE).click()
 
-            print("count", count)
             count += 1
