@@ -6,6 +6,9 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
 from app.application import Application
 
+#  Run Behave tests with Allure results
+#  behave -f allure_behave.formatter:AllureFormatter -o test_results/features/tests/SEARCH_HIGH_DEMAND.feature
+
 
 def browser_init(context,scenario_name):
     """
