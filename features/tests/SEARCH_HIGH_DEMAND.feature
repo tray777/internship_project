@@ -5,10 +5,11 @@ Feature: Test Scenarios for search filter functionality
     When Type user email arispe.tracy@gmail.com into email textbox
     When Type user password abc123 into password textbox
     When Click Continue button
-    When Click on off plan icon at the left side menu
     Then Verify that Total projects text is displayed
+    When Click on off plan icon at the left side menu
     When Click on Filters button
     When Click on High Demand button
     Then Verify all products contain the High Demand tag
+
 
 

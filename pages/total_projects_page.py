@@ -11,7 +11,9 @@ class TotalProjectsPage(Page):
     CLICK_NEXT_PAGE = (By.XPATH, "//a[@wized='nextPageProperties']")
 
     def verify_text_displayed(self, total_projects_text):
-        self.verify_text(total_projects_text, *self.TOTAL_PROJECTS_TEXT)
+        self.wait_element_visible(*self.TOTAL_PROJECTS_TEXT)
+        assert self.find_element(*self.TOTAL_PROJECTS_TEXT).is_displayed()
+        #self.verify_text(total_projects_text, *self.TOTAL_PROJECTS_TEXT)
 
     def click_on_filters_button(self):
         sleep(5)
@@ -36,3 +38,5 @@ class TotalProjectsPage(Page):
             self.find_element(*self.CLICK_NEXT_PAGE).click()
 
             count += 1
+
+

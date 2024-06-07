@@ -4,26 +4,6 @@ from behave import given, when, then
 from time import sleep
 
 
-@given("Open Reelly main page")
-def open_reelly_main_page(context):
-    context.app.main_page.open_reelly_main_page()
-
-
-@when("Type user email {email} into email textbox")
-def user_email_textbox(context, email):
-    context.app.main_page.user_email_textbox(email)
-
-
-@when("Type user password {password} into password textbox")
-def user_password_textbox(context, password):
-    context.app.main_page.user_password_textbox(password)
-
-
-@when("Click Continue button")
-def click_on_cart_icon(context):
-    context.app.main_page.click_on_cart_icon()
-
-
 @when("Click on off plan icon at the left side menu")
 def click_off_plan_icon(context):
     context.app.side_menu_off_plan.click_off_plan_icon()
